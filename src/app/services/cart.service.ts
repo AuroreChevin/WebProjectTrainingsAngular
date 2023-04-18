@@ -1,25 +1,22 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Training } from '../model/training.model';
-import { Customer } from '../model/customer.model'
+import { Customer } from '../model/customer.model';
 @Injectable({
   providedIn: 'root'
 })
 export class CartService implements OnInit{
-  public cart = new Map<number, Training>();
-  
-  totalAmount = 0;
+public cart = new Map<number, Training>();
+totalAmount : number = 0;
+public customer : any;
   constructor() { 
-    let cart = localStorage.getItem('cart');
-    if(cart){ // le panier existe déjà
-      this.cart = new Map(JSON.parse(cart));
+    let cart1 = localStorage.getItem('cart');
+    if(cart1){ // le panier existe déjà
+      this.cart = new Map(JSON.parse(cart1));
   }else {this.cart = new Map<number,Training>();}
 }
 ngOnInit(): void {
-  
 }
- 
   addTraining(training:Training){
-    
     if(this.cart.get(training.id)){
       this.cart.get(training.id)?.setQuantity(training.quantity);
     }
@@ -34,7 +31,7 @@ ngOnInit(): void {
     this.cart.forEach((t)=>{
         this.totalAmount += (t.quantity*t.price);
     });
-    return this.totalAmount; 
+    return "€"+this.totalAmount; 
   }
   getCart(){
     return Array.from(this.cart.values());
@@ -43,13 +40,13 @@ ngOnInit(): void {
     this.cart.clear();
   }
   deleteTrainingCart(training:Training){
-    console.log(this.cart);
     this.cart.delete(training.id);
+    localStorage.setItem('cart',JSON.stringify([...this.cart]));
   }
-  onSaveCustomer(customer : Customer){
+  saveCustomer(customer : Customer){
   
   }
   getCustomer(){
-  
+    return this.customer.name, this.customer.firstname, this.customer.address, this.customer.phone, this.customer.email;
   }
 }

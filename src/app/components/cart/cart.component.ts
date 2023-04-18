@@ -16,4 +16,5 @@ ngOnInit(): void {
   onRemoveToCart(training:Training){
     this.cartService.deleteTrainingCart(training);
   }
+  
 }

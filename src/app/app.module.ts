@@ -7,17 +7,22 @@ import { TrainingsComponent } from './components/trainings/trainings.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import { CustomerComponent } from './customer/customer.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     TrainingsComponent,
     CartComponent,
     NotFoundComponent,
+    CustomerComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
