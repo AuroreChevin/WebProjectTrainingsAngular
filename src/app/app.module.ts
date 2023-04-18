@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
     AppComponent,
     TrainingsComponent,
     CartComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     FormsModule,

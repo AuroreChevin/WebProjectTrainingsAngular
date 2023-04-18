@@ -14,8 +14,15 @@
                     <td>{{item.quantity}}</td>
                     <td>{{item.price}}</td>
                     <td><a class="btn btn-danger" (click)="onRemoveToCart(item)">Supprimer</a></td>
-                </tr>                
+                </tr>
+                <tr>
+                    <td >Total</td>
+                    <td></td>
+                    <td></td>
+                    <td>{{total}}</td>  
+                </tr>              
             </tbody>
         </table>
+        <a class="btn btn-success">Commander</a>
     </ng-container>
 </div>
