@@ -1,28 +1,28 @@
-<div class="container">
-    <div class="col-md-3">
-        <form action="ngForm" (ngSubmit)="onSaveCustomer(f.value)">
+<div class="container ">
+    <div class="col-md-3 m-auto">
+        <form (ngSubmit)="onSaveCustomer(myForm)">
             <div class="form-group">
                 <label class="control-label">Nom :</label>
-                <input type="text" name="name" required class="form-control" [(ngModel)]="cartService.getCustomer().name">
+                <input type="text" name="name" class="form-control">
             </div>
             <div class="form-group">
                 <label class="control-label">Prénom :</label>
-                <input type="text" name="firstname" required class="form-control" [(ngModel)]="cartService.getCustomer().firstname">
+                <input type="text" name="firstname" class="form-control">
             </div>
             <div class="form-group">
                 <label class="control-label">Adresse :</label>
-                <input type="text" name="address" required class="form-control" [(ngModel)]="cartService.getCustomer().address">
+                <input type="text" name="address" class="form-control">
             </div>
             <div class="form-group">
                 <label class="control-label">Tél :</label>
-                <input type="text" name="phone" required class="form-control" [(ngModel)]="cartService.getCustomer().phone">
+                <input type="text" name="phone" class="form-control">
             </div>
             <div class="form-group">
                 <label class="control-label">Email :</label>
-                <input type="text" name="email" required class="form-control" [(ngModel)]="cartService.getCustomer().email">
-            </div>
-            <button type="submit" [disabled]="if.valid" class="btn btn-success"></button>
+                <input type="text" name="email" class="form-control">
+            </div>            
         </form>
-
+        <button type="submit" class="btn btn-success">Valider</button> 
     </div>
+    
 </div>

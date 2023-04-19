@@ -9,6 +9,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { CustomerComponent } from './customer/customer.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CustomerComponent } from './customer/customer.component';
     CartComponent,
     NotFoundComponent,
     CustomerComponent,
+    AuthenticationComponent,
   ],
   imports: [
     FormsModule,

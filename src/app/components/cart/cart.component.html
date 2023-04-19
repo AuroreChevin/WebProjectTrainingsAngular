@@ -12,17 +12,17 @@
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.quantity}}</td>
-                    <td>{{item.price}}</td>
+                    <td>{{item.price | number: '0.2'}}</td>
                     <td><a class="btn btn-danger" (click)="onRemoveToCart(item)">Supprimer</a></td>
                 </tr>
                 <tr>
                     <td >Total</td>
                     <td></td>
                     <td></td>
-                    <td>{{total}}</td>  
+                    <td>{{total | currency : 'EUR'}}</td>  
                 </tr>              
             </tbody>
         </table>
-        <a class="btn btn-success">Commander</a>
+        <a class="btn btn-success" routerLink="/order">Commander</a>
     </ng-container>
 </div>

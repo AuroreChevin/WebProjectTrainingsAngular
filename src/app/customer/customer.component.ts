@@ -10,23 +10,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./customer.component.css']
 })
 export class CustomerComponent implements OnInit{
-  public myForm : FormGroup;
- customer = this.cartService.getCustomer();
+  myForm!: FormGroup;
   constructor(public cartService : CartService, private router : Router, private formBuilder: FormBuilder){ 
     /*let customer = this.cartService.getCustomer();
     this.myForm = new FormGroup({
       name : new FormControl(customer.name)
     })*/
-    this.myForm = this.formBuilder.group({
-      name : [this.customer.name, Validators.required],
-      firstname : [this.customer.firstname, Validators.required],
-      address : [this.customer.address, [Validators.required, Validators.minLength(25)]],
-      phone : [this.customer.phone, [Validators.required, Validators.maxLength(10)]],
-      email : [this.customer.email, [Validators.required, Validators.pattern('[a-z0-9.@]*')]],
-    })
   }
   ngOnInit(): void {
-    
+    this.myForm = this.formBuilder.group({
+      name : ['', Validators.required],
+      firstname : ['', Validators.required],
+      address : ['', [Validators.required, Validators.minLength(25)]],
+      phone : ['', [Validators.required, Validators.maxLength(10)]],
+      email : ['', [Validators.required, Validators.pattern('[a-z0-9.@]*')]],
+    })
   }
   onSaveCustomer(form : FormGroup){
     if(form.valid){

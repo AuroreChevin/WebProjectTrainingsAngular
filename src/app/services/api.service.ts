@@ -9,9 +9,9 @@ export class ApiService {
 
   constructor(private http:HttpClient) { }
   public getTrainings(){
-    return this.http.get<Training[]>("http://localhost:3000"+'/trainings');
+    return this.http.get<Training[]>(environment.host+'/trainings');
   }
   public getTraining(id : number){
-    return this.http.get<Training>("http://localhost:3000"+'/trainings/'+id);
+    return this.http.get<Training>(environment.host+'/trainings/'+id);
   }
 }

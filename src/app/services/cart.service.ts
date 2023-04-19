@@ -31,7 +31,7 @@ ngOnInit(): void {
     this.cart.forEach((t)=>{
         this.totalAmount += (t.quantity*t.price);
     });
-    return "€"+this.totalAmount; 
+    return this.totalAmount; 
   }
   getCart(){
     return Array.from(this.cart.values());
