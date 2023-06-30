@@ -7,14 +7,16 @@ import { Training } from 'src/app/model/training.model';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit{
-  public listCart = this.cartService.getCart();
-  public total = this.cartService.getTotalAmount();
+  listCart : Training[] | undefined;
   constructor(private cartService : CartService){}
 ngOnInit(): void {
+  this.listCart = this.cartService.getCart();
   
 }
   onRemoveToCart(training:Training){
     this.cartService.deleteTrainingCart(training);
   }
-  
+  onUpdateQty(training:Training, qty: number){
+    this.cartService.updateQuantity(training,qty);
+  }
 }

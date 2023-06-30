@@ -5,14 +5,15 @@ export class Training {
     price : number;
     quantity : number;
 
-    constructor(id : number, name: string, description : string, quantity : number,price : number,){
+    constructor(id: number, name: string, description : string,price : number, quantity : number){
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
     }
-    getId() { return this.id; }
+    
+    /* getId() { return this.id; }
     getName() { return this.name; }
     getPrice() { return this.price; }
     setPrice(price:number) { this.price = price; }
@@ -20,5 +21,5 @@ export class Training {
     setQuantity(quantity:number) { this.quantity = quantity; }
     toString() {
         return " id:" + this.id + " " + this.name + " " + this.price + "€";
-    }
+    } */
 }

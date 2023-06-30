@@ -1,28 +1,28 @@
 <div class="container ">
     <div class="col-md-3 m-auto">
-        <form (ngSubmit)="onSaveCustomer(myForm)">
+        <form [formGroup]="myForm" (ngSubmit)="onSaveCustomer()">
             <div class="form-group">
                 <label class="control-label">Nom :</label>
-                <input type="text" name="name" class="form-control">
+                <input type="text" formControlName ="name" class="form-control">
             </div>
             <div class="form-group">
                 <label class="control-label">Prénom :</label>
-                <input type="text" name="firstname" class="form-control">
+                <input type="text" formControlName="firstname" class="form-control">
             </div>
             <div class="form-group">
                 <label class="control-label">Adresse :</label>
-                <input type="text" name="address" class="form-control">
+                <input type="text" formControlName="address" class="form-control">
             </div>
             <div class="form-group">
                 <label class="control-label">Tél :</label>
-                <input type="text" name="phone" class="form-control">
+                <input type="text" formControlName="phone" class="form-control">
             </div>
             <div class="form-group">
                 <label class="control-label">Email :</label>
-                <input type="text" name="email" class="form-control">
-            </div>            
+                <input type="text" formControlName="email" class="form-control">
+            </div> 
+            <button class="btn btn-success" (click)="okCustomer()">Valider</button>            
         </form>
-        <button type="submit" class="btn btn-success">Valider</button> 
-    </div>
-    
+        
+    </div>    
 </div>

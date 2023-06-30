@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CartService } from '../services/cart.service';
+import { CartService } from '../../services/cart.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,11 +14,11 @@ export class AuthenticationComponent implements OnInit {
   constructor(public cartService : CartService, private router : Router, private formBuilder: FormBuilder){}  
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
-      email : ['', [Validators.required, Validators.pattern('[a-z0-9.@]*')]],
+      email : ['', [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       password : ['', [Validators.required, Validators.pattern('[a-z0-9.@]*')]],
     })
   }
-  login(myForm: FormGroup){
+  login(){
 
   }
 }
