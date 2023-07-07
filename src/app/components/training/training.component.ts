@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./training.component.css']
 })
 export class TrainingComponent implements OnInit{
-  //myForm!: FormGroup;
+  
   error: null | undefined;
   training!: Training;
   myForm!: FormGroup;
