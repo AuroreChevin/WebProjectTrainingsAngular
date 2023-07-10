@@ -7,6 +7,8 @@ import { CustomerComponent } from './customer/customer.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { OrderComponent } from './order/order.component';
 import { TrainingComponent } from './components/training/training.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { AuthenticationGuard } from './components/authentication/authentication.guard';
 const routes: Routes = [
   {path : 'trainings', component : TrainingsComponent },
   {path : 'cart', component : CartComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   {path : 'order', component: OrderComponent},
   {path : 'Authentication', component : AuthenticationComponent},
   {path : 'training', component : TrainingComponent},
+  {path : 'admin', component : AdminComponent,
+  canActivate : [AuthenticationGuard]},
   {path : '', redirectTo : 'trainings', pathMatch :'full' },
   {path : '404', component : NotFoundComponent },
   {path : '**', redirectTo: '/404'}

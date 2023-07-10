@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 export class JwtService {
 
   constructor(private http : HttpClient) { }
-  DecodeToken(token : string): string{
+  DecodeToken(token : string){
 
     return jwt_decode(token)
 

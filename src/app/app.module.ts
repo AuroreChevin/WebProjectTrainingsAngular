@@ -7,11 +7,15 @@ import { TrainingsComponent } from './components/trainings/trainings.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { CustomerComponent } from './customer/customer.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { OrderComponent } from './order/order.component';
 import { TrainingComponent } from './components/training/training.component';
+import { AuthenticationService } from './services/authentication.service';
+import { AdminComponent } from './components/admin/admin.component';
+import { AuthInterceptor } from './components/authentication/authInterceptor';
+import { AuthenticationGuard } from './components/authentication/authentication.guard';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,7 @@ import { TrainingComponent } from './components/training/training.component';
     AuthenticationComponent,
     OrderComponent,
     TrainingComponent,
+    AdminComponent,
   ],
   imports: [
     FormsModule,
@@ -31,7 +36,14 @@ import { TrainingComponent } from './components/training/training.component';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    
+  {
+    provide : HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi:true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

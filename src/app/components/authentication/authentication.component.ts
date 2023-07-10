@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { User } from 'src/app/model/user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtService } from 'src/app/services/jwt.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-authentication',
@@ -15,9 +16,13 @@ import { JwtService } from 'src/app/services/jwt.service';
 export class AuthenticationComponent implements OnInit {
   myForm: FormGroup;
   error: null | undefined;
-
  
-  constructor(public cartService : CartService, private router : Router, private formBuilder: FormBuilder, public apiService : ApiService, public jwtService : JwtService ){
+  constructor(public cartService : CartService,
+              private router : Router,
+              private formBuilder: FormBuilder,
+              public apiService : ApiService,
+              public authService : AuthenticationService,
+              public jwtService : JwtService ){
     this.myForm = this.formBuilder.group({
       username : ['', Validators.required],
       password : ['', Validators.required],
@@ -28,9 +33,12 @@ export class AuthenticationComponent implements OnInit {
   login(){
     if(this.myForm.invalid){return;}
     this.apiService.postUser(this.myForm.value.username, this.myForm.value.password).subscribe( {
-        next: (data) => {localStorage.setItem('token', JSON.stringify(data))
-                        const jwt = data['access-token']
-                        console.log(this.jwtService.DecodeToken(jwt))},
+        next: (data) => {this.authService.setToken(data['access-token']);
+                        const jwt = data['access-token'];
+                        let decodedToken = this.jwtService.DecodeToken(jwt);
+                        console.log(decodedToken);
+                      this.authService.setRoles(data.roles)},
+                        
         error: (err) => (this.error = err.message),
         complete: () => (this.error = null),
       })

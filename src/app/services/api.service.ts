@@ -8,7 +8,7 @@ import { User } from '../model/user.model';
 })
 export class ApiService {
   
-
+  httpOptions = new HttpHeaders({ 'Authorization': 'Bearer '});
   constructor(private http:HttpClient) { }
   public getTrainings(){
     return this.http.get<Training[]>(environment.host+'/trainings');
@@ -26,15 +26,15 @@ export class ApiService {
     return this.http.get<User[]>(environment.host +"/users");
   }
  public postUser(username : string, password : string){
+   
   const formData = new FormData;
   formData.append("username", username);
   formData.append("password", password);
-    return this.http.post<any>("http://localhost:8080/login", formData);
+    return this.http.post<any>("http://localhost:8080/login", formData,  {headers : this.httpOptions});
   }
-  getCurrentUser(){
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Authorization': 'Bearer ' +localStorage.getItem("token") })
-    };
+  /*getCurrentUser(){
+    
     return this.http.get(environment.host, httpOptions);
-  }
+  }*/
+
 }
