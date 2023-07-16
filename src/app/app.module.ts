@@ -16,6 +16,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { AdminComponent } from './components/admin/admin.component';
 import { AuthInterceptor } from './components/authentication/authInterceptor';
 import { AuthenticationGuard } from './components/authentication/authentication.guard';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AuthenticationGuard } from './components/authentication/authentication.
     OrderComponent,
     TrainingComponent,
     AdminComponent,
+    RegisterComponent,
   ],
   imports: [
     FormsModule,

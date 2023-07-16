@@ -3,6 +3,8 @@ import {HttpClient, HttpHandler, HttpHeaders} from '@angular/common/http';
 import { Training } from '../model/training.model';
 import { environment } from 'src/environments/environment';
 import { User } from '../model/user.model';
+import { Role } from '../model/role.model';
+import { UserRoleForm } from '../model/user-role-form.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,12 +27,22 @@ export class ApiService {
   public getUsers(){
     return this.http.get<User[]>(environment.host +"/users");
   }
+  public getRoles(){
+    return this.http.get<Role[]>(environment.host +"/roles");
+  }
  public postUser(username : string, password : string){
-   
   const formData = new FormData;
   formData.append("username", username);
   formData.append("password", password);
-    return this.http.post<any>("http://localhost:8080/login", formData,  {headers : this.httpOptions});
+    return this.http.post<any>("http://localhost:8080/login", formData);
+  }
+  public saveUser(user: any){
+   
+    return this.http.post<User>(environment.host+ '/users', user);
+  }
+  
+  public postRoleUser(userRoleForm : any){
+    return this.http.post<UserRoleForm>(environment.host+ '/roleUser', userRoleForm);
   }
   /*getCurrentUser(){
     

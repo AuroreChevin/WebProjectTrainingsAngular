@@ -9,6 +9,7 @@ import { OrderComponent } from './order/order.component';
 import { TrainingComponent } from './components/training/training.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AuthenticationGuard } from './components/authentication/authentication.guard';
+import { RegisterComponent } from './components/register/register.component';
 const routes: Routes = [
   {path : 'trainings', component : TrainingsComponent },
   {path : 'cart', component : CartComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path : 'order', component: OrderComponent},
   {path : 'Authentication', component : AuthenticationComponent},
   {path : 'training', component : TrainingComponent},
+  {path : 'register', component : RegisterComponent},
   {path : 'admin', component : AdminComponent,
   canActivate : [AuthenticationGuard]},
   {path : '', redirectTo : 'trainings', pathMatch :'full' },

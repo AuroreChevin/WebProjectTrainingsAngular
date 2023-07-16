@@ -24,7 +24,8 @@ export class TrainingsComponent implements OnInit{
     ];*/
   getAllTrainings(){
     this.apiService.getTrainings().subscribe({
-      next: (data) => this.listTrainings = data,
+      next: (data) => {this.listTrainings = data;
+      console.log(this.listTrainings)},
       error: (err) => this.error = err.message,
       complete: () => this.error = null,
     });
