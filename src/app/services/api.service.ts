@@ -5,15 +5,20 @@ import { environment } from 'src/environments/environment';
 import { User } from '../model/user.model';
 import { Role } from '../model/role.model';
 import { UserRoleForm } from '../model/user-role-form.model';
+import { Category } from '../model/category.model';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  
-  httpOptions = new HttpHeaders({ 'Authorization': 'Bearer '});
   constructor(private http:HttpClient) { }
   public getTrainings(){
     return this.http.get<Training[]>(environment.host+'/trainings');
+  }
+  public getCategories(){
+    return this.http.get<Category[]>(environment.host+'/categories');
+  }
+  public getTrainingsByCategoryId(id : number){
+    return this.http.get<Training[]>(environment.host + '/trainings/category/'+id);
   }
   public postTraining(training : any){
     return this.http.post<Training>(environment.host+'/trainings', training);
@@ -43,6 +48,12 @@ export class ApiService {
   
   public postRoleUser(userRoleForm : any){
     return this.http.post<UserRoleForm>(environment.host+ '/roleUser', userRoleForm);
+  }
+  public postPhoto(file : File, id : number){
+    console.log("coucou")
+   let  formData : FormData = new FormData();
+   formData.append('file', file);
+   return this.http.post<any>(environment.host+'/photo/'+id, formData)
   }
   /*getCurrentUser(){
     

@@ -33,7 +33,8 @@ export class AuthenticationComponent implements OnInit {
   login(){
     if(this.myForm.invalid){return;}
     this.apiService.postUser(this.myForm.value.username, this.myForm.value.password).subscribe( {
-        next: (data) => {this.authService.setToken(data['access-token']);
+        next: (data) => {console.log(data);
+          this.authService.setToken(data['access-token']);
                         const jwt = data['access-token'];
                         let decodedToken = this.jwtService.DecodeToken(jwt);
                         console.log(decodedToken);

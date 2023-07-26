@@ -7,14 +7,13 @@ import { TrainingsComponent } from './components/trainings/trainings.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { CustomerComponent } from './customer/customer.component';
+import {HttpClientModule} from '@angular/common/http';
+import { CustomerComponent } from './components/customer/customer.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
-import { OrderComponent } from './order/order.component';
+import { OrderComponent } from './components/order/order.component';
 import { TrainingComponent } from './components/training/training.component';
 import { AuthenticationService } from './services/authentication.service';
 import { AdminComponent } from './components/admin/admin.component';
-import { AuthInterceptor } from './components/authentication/authInterceptor';
 import { AuthenticationGuard } from './components/authentication/authentication.guard';
 import { RegisterComponent } from './components/register/register.component';
 
@@ -39,12 +38,7 @@ import { RegisterComponent } from './components/register/register.component';
     ReactiveFormsModule,
   ],
   providers: [
-    
-  {
-    provide : HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi:true
-  }
+ 
   ],
   bootstrap: [AppComponent]
 })

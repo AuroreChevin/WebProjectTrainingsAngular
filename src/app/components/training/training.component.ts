@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./training.component.css']
 })
 export class TrainingComponent implements OnInit{
-  
+  id: any;
   error: null | undefined;
   training!: Training;
   myForm!: FormGroup;
@@ -24,7 +24,8 @@ export class TrainingComponent implements OnInit{
   })
   }
   ngOnInit(): void {
-    
+   /* this.id = this.router.snapshot.paramMap.get('id');
+        console.log(this.id);*/
   }
   onSaveTraining(myForm : FormGroup){
     if(myForm.valid){
