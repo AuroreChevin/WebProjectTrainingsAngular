@@ -12,9 +12,6 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { OrderComponent } from './components/order/order.component';
 import { TrainingComponent } from './components/training/training.component';
-import { AuthenticationService } from './services/authentication.service';
-import { AdminComponent } from './components/admin/admin.component';
-import { AuthenticationGuard } from './components/authentication/authentication.guard';
 import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
@@ -27,7 +24,6 @@ import { RegisterComponent } from './components/register/register.component';
     AuthenticationComponent,
     OrderComponent,
     TrainingComponent,
-    AdminComponent,
     RegisterComponent,
   ],
   imports: [

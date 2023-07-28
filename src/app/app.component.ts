@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './services/authentication.service';
 import { ApiService } from './services/api.service';
 import { Training } from './model/training.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { Training } from './model/training.model';
 export class AppComponent implements OnInit{
   listTrainings : Training[] =[];
   error: null | undefined;
-  constructor(private authService : AuthenticationService, private apiService : ApiService){}
+  constructor(public authService : AuthenticationService, private apiService : ApiService, private router : Router){}
   title = 'Shop';
   ngOnInit(): void {;
   }
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit{
   }
   public logout(){
     this.authService.clearStorage();
+    this.router.navigateByUrl('trainings');
   }
   getAllTrainings(){
     this.apiService.getTrainings().subscribe({

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { Category } from 'src/app/model/category.model';
 import { environment } from 'src/environments/environment';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 @Component({
   selector: 'app-trainings',
   templateUrl: './trainings.component.html',
@@ -23,7 +24,7 @@ export class TrainingsComponent implements OnInit{
   size=5;
   totalPages:Array<number> | undefined;
   constructor(private cartService : CartService, private apiService: ApiService,
-    private router : Router) { }
+    private router : Router, public authService : AuthenticationService) { }
   ngOnInit(): void{
     this.host = environment.host;
     this.getAllTrainings();

@@ -15,7 +15,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class AuthenticationComponent implements OnInit {
   myForm: FormGroup;
-  error: null | undefined;
+  error : string | undefined;
  
   constructor(public cartService : CartService,
               private router : Router,
@@ -30,20 +30,21 @@ export class AuthenticationComponent implements OnInit {
   }  
   ngOnInit(): void {
   }
-  login(){
-    if(this.myForm.invalid){return;}
-    this.apiService.postUser(this.myForm.value.username, this.myForm.value.password).subscribe( {
+  login(myForm: FormGroup){
+    if(myForm.valid){
+    this.authService.postUser(myForm.value.username, myForm.value.password).subscribe( {
         next: (data) => {console.log(data);
-          this.authService.setToken(data['access-token']);
-                        const jwt = data['access-token'];
-                        let decodedToken = this.jwtService.DecodeToken(jwt);
-                        console.log(decodedToken);
-                      this.authService.setRoles(data.roles)},
+                        let jwt = data.headers.get('Authorization');
+                        console.log(jwt);
+                        this.authService.saveToken(jwt);
+                        },
                         
-        error: (err) => (this.error = err.message),
-        complete: () => (this.error = null),
+        error: (err) => (this.error = "pb"),
+        complete: () => (this.error = "null"),
       })
-      console.log(this.myForm.value);  
+      console.log(myForm.value);
+      this.router.navigateByUrl('trainings');
+    } 
   }
   
 }

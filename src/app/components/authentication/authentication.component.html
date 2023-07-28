@@ -1,6 +1,6 @@
 <div class="container ">
     <div class="col-md-3 m-auto">
-        <form [formGroup]="myForm" (ngSubmit)="login()">
+        <form [formGroup]="myForm" (ngSubmit)="login(myForm)">
             <div class="form-group">
                 <label class="control-label">Username :</label>
                 <input type="text" formControlName="username" class="form-control">
